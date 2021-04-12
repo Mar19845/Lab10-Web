@@ -12,26 +12,21 @@ class App extends Component {
         super(props);
 
         this.state = {
-            input: ""
+            input: "",
+            signo:"",
+            val1: "",
+            val2:"",
+            resultado:"",
         };
     }
     addInput(val){
         this.setState({ input: this.state.input + val });
     }
-    /*
-    addInput = (val) => {
-        this.setState({ input: this.state.input + val });
-    };
-    */
+    
     Equal(){
         this.setState({ input: math.evaluate(this.state.input) });
     }
-    /*   
-    Equal = () => {
-        this.setState({ input: math.eval(this.state.input) });
-    };
-    */
-
+    
     render() {
         return (
             <div className="app">
@@ -42,28 +37,28 @@ class App extends Component {
                         <Boton addVal={()=>this.setState({input: this.state.input + 7})}>7</Boton>
                         <Boton addVal={()=>this.setState({input: this.state.input + 8})}>8</Boton>
                         <Boton addVal={()=>this.setState({input: this.state.input + 9})}>9</Boton>
-                        <Boton handleClick={this.addInput}>/</Boton>
+                        <Boton addVal={()=>this.setState({signo: "/",val1:this.state.input,input: ""})}>/</Boton>
                     </div>
                     <div className="fila">
                         <Boton addVal={()=>this.setState({input: this.state.input + 4})}>4</Boton>
                         <Boton addVal={()=>this.setState({input: this.state.input + 5})}>5</Boton>
                         <Boton addVal={()=>this.setState({input: this.state.input + 6})}>6</Boton>
-                        <Boton handleClick={this.addInput}>x</Boton>
+                        <Boton addVal={()=>this.setState({signo: "*",val1:this.state.input,input: ""})}>x</Boton>
                     </div>
                     <div className="fila">
                         <Boton addVal={()=>this.setState({input: this.state.input + 1})}>1</Boton>
                         <Boton addVal={()=>this.setState({input: this.state.input + 2})}>2</Boton>
                         <Boton addVal={()=>this.setState({input: this.state.input + 3})}>3</Boton>
-                        <Boton handleClick={this.addInput}>+</Boton>
+                        <Boton addVal={()=>this.setState({signo: "+",val1:this.state.input,input: ""})}>+</Boton>
                     </div>
                     <div className="fila">
                         <Boton addVal={()=>this.setState({input: this.state.input + '.'})}>.</Boton>
                         <Boton addVal={()=>this.setState({input: this.state.input + 0})}>0</Boton>
-                        <Boton handleClick={() => this.Equal()}>=</Boton>
-                        <Boton handleClick={this.addInput}>-</Boton>
+                        <Boton addVal={()=>this.setState({input:math.evaluate(this.state.val1+this.state.signo+this.state.input)})}>=</Boton>
+                        <Boton addVal={()=>this.setState({signo: "-",val1:this.state.input,input: ""})}>-</Boton>
                     </div>
                     <div className="fila">
-                        <ClearBtn handleClear={() => this.setState({ input: "" })}>
+                        <ClearBtn handleClear={() => this.setState({ input: "",val1:"",val2:"",signo:"",result:"" })}>
                             Borrar
                         </ClearBtn>
                     </div>
