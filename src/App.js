@@ -62,6 +62,7 @@ class App extends Component {
                             Borrar
                         </ClearBtn>
                         <Boton addVal={()=>this.setState({input: math.evaluate("-1 * " + this.state.input)})}>+/-</Boton>
+                        <Boton addVal={()=>this.setState({signo: "%",val1:this.state.input,input: ""})}>%</Boton>
                     </div>
                 </div>
             </div>
