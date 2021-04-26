@@ -5,7 +5,7 @@ class Input extends Component {
     render() {
         return (
             
-            <div className="input">
+            <div data-testid="input" className="input">
                 {this.props.input}
             </div>
             
